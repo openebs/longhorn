@@ -6,9 +6,9 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
+	"github.com/openebs/longhorn/util"
 	"github.com/rancher/go-rancher/api"
 	"github.com/rancher/go-rancher/client"
-	"github.com/rancher/longhorn/util"
 )
 
 func (s *Server) ListReplicas(rw http.ResponseWriter, req *http.Request) error {

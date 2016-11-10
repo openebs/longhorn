@@ -8,10 +8,10 @@ import (
 	"github.com/codegangsta/cli"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
-	"github.com/rancher/longhorn/agent/controller"
-	"github.com/rancher/longhorn/agent/controller/rest"
-	replica "github.com/rancher/longhorn/agent/replica/rest"
-	"github.com/rancher/longhorn/agent/status"
+	"github.com/openebs/longhorn/agent/controller"
+	"github.com/openebs/longhorn/agent/controller/rest"
+	replica "github.com/openebs/longhorn/agent/replica/rest"
+	"github.com/openebs/longhorn/agent/status"
 )
 
 var (

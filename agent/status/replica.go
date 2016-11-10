@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/openebs/longhorn/controller/client"
+	replicaClient "github.com/openebs/longhorn/replica/client"
 	md "github.com/rancher/go-rancher-metadata/metadata"
-	"github.com/rancher/longhorn/controller/client"
-	replicaClient "github.com/rancher/longhorn/replica/client"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/rancher/longhorn/agent/controller"
+	"github.com/openebs/longhorn/agent/controller"
 )
 
 type ReplicaStatus struct {

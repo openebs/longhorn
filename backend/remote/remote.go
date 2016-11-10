@@ -12,10 +12,10 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/rancher/longhorn/replica/rest"
-	"github.com/rancher/longhorn/rpc"
-	"github.com/rancher/longhorn/types"
-	"github.com/rancher/longhorn/util"
+	"github.com/openebs/longhorn/replica/rest"
+	"github.com/openebs/longhorn/rpc"
+	"github.com/openebs/longhorn/types"
+	"github.com/openebs/longhorn/util"
 	journal "github.com/rancher/sparse-tools/stats"
 )
 

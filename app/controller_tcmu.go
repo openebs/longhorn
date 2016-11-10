@@ -3,7 +3,7 @@
 package app
 
 import (
-	"github.com/rancher/longhorn/frontend/tcmu"
+	"github.com/openebs/longhorn/frontend/tcmu"
 )
 
 func init() {

@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/rancher/longhorn/replica/client"
-	"github.com/rancher/longhorn/types"
+	"github.com/openebs/longhorn/replica/client"
+	"github.com/openebs/longhorn/types"
 )
 
 func (c *Controller) Revert(name string) error {

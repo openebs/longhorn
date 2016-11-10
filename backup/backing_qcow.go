@@ -3,8 +3,8 @@
 package backup
 
 import (
-	"github.com/rancher/longhorn/qcow"
-	"github.com/rancher/longhorn/replica"
+	"github.com/openebs/longhorn/qcow"
+	"github.com/openebs/longhorn/replica"
 )
 
 func openBackingFile(file string) (*replica.BackingFile, error) {

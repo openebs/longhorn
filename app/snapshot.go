@@ -8,8 +8,8 @@ import (
 
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
-	"github.com/rancher/longhorn/sync"
-	"github.com/rancher/longhorn/util"
+	"github.com/openebs/longhorn/sync"
+	"github.com/openebs/longhorn/util"
 )
 
 func SnapshotCmd() cli.Command {

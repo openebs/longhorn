@@ -3,7 +3,7 @@ package status
 import (
 	"net/http"
 
-	"github.com/rancher/longhorn/controller/client"
+	"github.com/openebs/longhorn/controller/client"
 )
 
 type ControllerStatus struct {

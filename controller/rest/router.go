@@ -2,8 +2,8 @@ package rest
 
 import (
 	"github.com/gorilla/mux"
+	"github.com/openebs/longhorn/replica/rest"
 	"github.com/rancher/go-rancher/api"
-	"github.com/rancher/longhorn/replica/rest"
 )
 
 func NewRouter(s *Server) *mux.Router {

@@ -14,7 +14,7 @@ import (
 
 	"github.com/Sirupsen/logrus"
 	"github.com/deckarep/golang-set"
-	"github.com/rancher/longhorn/types"
+	"github.com/openebs/longhorn/types"
 	"github.com/rancher/sparse-tools/sparse"
 )
 

@@ -4,8 +4,8 @@ import (
 	"net"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/rancher/longhorn/replica"
-	"github.com/rancher/longhorn/rpc"
+	"github.com/openebs/longhorn/replica"
+	"github.com/openebs/longhorn/rpc"
 )
 
 type Server struct {

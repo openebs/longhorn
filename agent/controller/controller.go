@@ -11,10 +11,10 @@ import (
 
 	"github.com/Sirupsen/logrus"
 
+	lclient "github.com/openebs/longhorn/controller/client"
+	"github.com/openebs/longhorn/controller/rest"
+	replicaClient "github.com/openebs/longhorn/replica/client"
 	"github.com/rancher/go-rancher-metadata/metadata"
-	lclient "github.com/rancher/longhorn/controller/client"
-	"github.com/rancher/longhorn/controller/rest"
-	replicaClient "github.com/rancher/longhorn/replica/client"
 )
 
 const (

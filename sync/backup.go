@@ -4,10 +4,10 @@ import (
 	"fmt"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/rancher/longhorn/controller/rest"
-	"github.com/rancher/longhorn/replica"
-	replicaClient "github.com/rancher/longhorn/replica/client"
-	"github.com/rancher/longhorn/util"
+	"github.com/openebs/longhorn/controller/rest"
+	"github.com/openebs/longhorn/replica"
+	replicaClient "github.com/openebs/longhorn/replica/client"
+	"github.com/openebs/longhorn/util"
 )
 
 func (t *Task) CreateBackup(snapshot, dest string) (string, error) {

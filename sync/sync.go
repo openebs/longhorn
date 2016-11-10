@@ -6,10 +6,10 @@ import (
 	"strings"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/rancher/longhorn/controller/client"
-	"github.com/rancher/longhorn/controller/rest"
-	"github.com/rancher/longhorn/replica"
-	replicaClient "github.com/rancher/longhorn/replica/client"
+	"github.com/openebs/longhorn/controller/client"
+	"github.com/openebs/longhorn/controller/rest"
+	"github.com/openebs/longhorn/replica"
+	replicaClient "github.com/openebs/longhorn/replica/client"
 )
 
 type Task struct {

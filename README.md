@@ -1,4 +1,4 @@
-longhorn [![Build Status](https://drone.rancher.io/api/badges/rancher/longhorn/status.svg)](https://drone.rancher.io/rancher/longhorn)
+longhorn [![Build Status](https://drone.rancher.io/api/badges/openebs/longhorn/status.svg)](https://drone.rancher.io/openebs/longhorn)
 ========
 
 A microservice that does micro things.
@@ -27,7 +27,7 @@ iscsiadm --version
 
 To start Longhorn with an single replica, run following command:
 ```
-docker run --privileged -v /dev:/host/dev -v /proc:/host/proc -v /volume rancher/longhorn launch-simple-longhorn vol-name 10g tgt
+docker run --privileged -v /dev:/host/dev -v /proc:/host/proc -v /volume openebs/longhorn launch-simple-longhorn vol-name 10g tgt
 ```
 
 That will create the device `/dev/longhorn/vol-name`
@@ -42,7 +42,7 @@ Also ensure that TCMU is enabled:
 
 To start Longhorn with an single replica, run following command:
 ```
-docker run --privileged -v /dev:/host/dev -v /proc:/host/proc -v /sys/kernel/config:/sys/kernel/config -v /volume rancher/longhorn launch-simple-longhorn vol-name 10g tcmu
+docker run --privileged -v /dev:/host/dev -v /proc:/host/proc -v /sys/kernel/config:/sys/kernel/config -v /volume openebs/longhorn launch-simple-longhorn vol-name 10g tcmu
 ```
 
 That will create the device `/dev/longhorn/vol-name`
@@ -57,13 +57,13 @@ docker network create --subnet=172.18.0.0/16 longhorn-net
 ```
 ##### 2. Add two replicas to the network, suppose their IPs are `172.18.0.2` and `172.18.0.3`:
 ```
-docker run --net longhorn-net --ip 172.18.0.2 --expose 9502-9504 -v /volume rancher/longhorn launch replica --listen 172.18.0.2:9502 --size 10g /volume
-docker run --net longhorn-net --ip 172.18.0.3 --expose 9502-9504 -v /volume rancher/longhorn launch replica --listen 172.18.0.3:9502 --size 10g /volume
+docker run --net longhorn-net --ip 172.18.0.2 --expose 9502-9504 -v /volume openebs/longhorn launch replica --listen 172.18.0.2:9502 --size 10g /volume
+docker run --net longhorn-net --ip 172.18.0.3 --expose 9502-9504 -v /volume openebs/longhorn launch replica --listen 172.18.0.3:9502 --size 10g /volume
 ```
 Notice you need to expose port 9502 to 9504 for Longhorn controller to communicate with replica.
 ##### 3. Start Longhorn controller. Take TGT for example:
 ```
-docker run --net longhorn-net --privileged -v /dev:/host/dev -v /proc:/host/proc rancher/longhorn launch controller --frontend tgt --replica tcp://172.18.0.2:9502 --replica tcp://172.18.0.3:9502 vol-name
+docker run --net longhorn-net --privileged -v /dev:/host/dev -v /proc:/host/proc openebs/longhorn launch controller --frontend tgt --replica tcp://172.18.0.2:9502 --replica tcp://172.18.0.3:9502 vol-name
 ```
 Now you will have device `/dev/longhorn/vol-name`.
 

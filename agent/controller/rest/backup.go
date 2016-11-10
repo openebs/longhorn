@@ -13,10 +13,10 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
 
+	"github.com/openebs/longhorn/agent/controller"
+	"github.com/openebs/longhorn/agent/replica/rest"
 	"github.com/rancher/go-rancher-metadata/metadata"
 	"github.com/rancher/go-rancher/api"
-	"github.com/rancher/longhorn/agent/controller"
-	"github.com/rancher/longhorn/agent/replica/rest"
 	"regexp"
 )
 
@@ -64,7 +64,7 @@ func (s *Server) CreateBackup(rw http.ResponseWriter, req *http.Request) error {
 		return err
 	}
 
-	destination := fmt.Sprintf("vfs:///var/lib/rancher/longhorn/backups/%v/%v", input.BackupTarget.Name, input.BackupTarget.UUID)
+	destination := fmt.Sprintf("vfs:///var/lib/openebs/longhorn/backups/%v/%v", input.BackupTarget.Name, input.BackupTarget.UUID)
 	status, err := backup(input.UUID, snapshot.Id, destination)
 	if err != nil {
 		return err

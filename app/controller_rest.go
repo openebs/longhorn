@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/rancher/longhorn/frontend/rest"
+	"github.com/openebs/longhorn/frontend/rest"
 )
 
 func init() {

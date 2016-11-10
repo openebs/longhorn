@@ -3,10 +3,10 @@ package rest
 import (
 	"encoding/base64"
 
+	"github.com/openebs/longhorn/controller"
+	"github.com/openebs/longhorn/types"
 	"github.com/rancher/go-rancher/api"
 	"github.com/rancher/go-rancher/client"
-	"github.com/rancher/longhorn/controller"
-	"github.com/rancher/longhorn/types"
 )
 
 type Replica struct {

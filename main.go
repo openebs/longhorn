@@ -9,8 +9,8 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
 	"github.com/docker/docker/pkg/reexec"
-	"github.com/rancher/longhorn/app"
-	"github.com/rancher/longhorn/backup"
+	"github.com/openebs/longhorn/app"
+	"github.com/openebs/longhorn/backup"
 	"github.com/rancher/sparse-tools/cli/sfold"
 	"github.com/rancher/sparse-tools/cli/ssync"
 )

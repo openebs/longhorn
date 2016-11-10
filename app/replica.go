@@ -11,10 +11,10 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
 	"github.com/docker/go-units"
-	"github.com/rancher/longhorn/replica"
-	"github.com/rancher/longhorn/replica/rest"
-	"github.com/rancher/longhorn/replica/rpc"
-	"github.com/rancher/longhorn/util"
+	"github.com/openebs/longhorn/replica"
+	"github.com/openebs/longhorn/replica/rest"
+	"github.com/openebs/longhorn/replica/rpc"
+	"github.com/openebs/longhorn/util"
 )
 
 func ReplicaCmd() cli.Command {

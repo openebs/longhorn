@@ -57,5 +57,5 @@ func (s *server) createNFSMount(target *BackupTarget) error {
 }
 
 func constructMountDir(target *BackupTarget) string {
-	return fmt.Sprintf("/var/lib/rancher/longhorn/backups/%s/%s", target.Name, target.UUID)
+	return fmt.Sprintf("/var/lib/openebs/longhorn/backups/%s/%s", target.Name, target.UUID)
 }

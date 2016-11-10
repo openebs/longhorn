@@ -8,10 +8,10 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
 
+	"github.com/openebs/longhorn/replica"
 	"github.com/rancher/convoy/api"
 	"github.com/rancher/convoy/objectstore"
 	"github.com/rancher/convoy/util"
-	"github.com/rancher/longhorn/replica"
 )
 
 const (

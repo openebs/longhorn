@@ -1,9 +1,9 @@
 package rest
 
 import (
+	rrest "github.com/openebs/longhorn/agent/replica/rest"
 	"github.com/rancher/go-rancher/api"
 	"github.com/rancher/go-rancher/client"
-	rrest "github.com/rancher/longhorn/agent/replica/rest"
 )
 
 type snapshot struct {

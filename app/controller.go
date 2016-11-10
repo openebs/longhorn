@@ -10,13 +10,13 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
 	"github.com/gorilla/handlers"
-	"github.com/rancher/longhorn/backend/dynamic"
-	"github.com/rancher/longhorn/backend/file"
-	"github.com/rancher/longhorn/backend/remote"
-	"github.com/rancher/longhorn/controller"
-	"github.com/rancher/longhorn/controller/rest"
-	"github.com/rancher/longhorn/types"
-	"github.com/rancher/longhorn/util"
+	"github.com/openebs/longhorn/backend/dynamic"
+	"github.com/openebs/longhorn/backend/file"
+	"github.com/openebs/longhorn/backend/remote"
+	"github.com/openebs/longhorn/controller"
+	"github.com/openebs/longhorn/controller/rest"
+	"github.com/openebs/longhorn/types"
+	"github.com/openebs/longhorn/util"
 )
 
 var (

@@ -7,7 +7,7 @@ import (
 	"github.com/rancher/go-rancher/api"
 	"github.com/rancher/go-rancher/client"
 
-	lclient "github.com/rancher/longhorn/controller/client"
+	lclient "github.com/openebs/longhorn/controller/client"
 )
 
 func HandleError(s *client.Schemas, t func(http.ResponseWriter, *http.Request) error) http.Handler {

@@ -487,7 +487,7 @@ func (s *TestSuite) TestPrepareRemove(c *C) {
 	c.Assert(len(r.activeDiskData), Equals, 5)
 	c.Assert(len(r.volume.files), Equals, 5)
 
-	/* https://github.com/rancher/longhorn/issues/184 */
+	/* https://github.com/openebs/longhorn/issues/184 */
 	actions, err = r.PrepareRemoveDisk("002")
 	c.Assert(err, IsNil)
 	c.Assert(actions, HasLen, 2)
