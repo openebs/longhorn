@@ -60,3 +60,5 @@ import:
   version: 1f0f4ff8d3fbef9328522993ce71c35890f67554
 - package: github.com/yasker/go-iscsi-helper
   version: 58912b2918090b07fb15f078f37eecbee61300d1
+- package: github.com/openebs/gotgt
+  version: 6fa3b3b5b2a7d12b425597b6e2887f24dc29baae
