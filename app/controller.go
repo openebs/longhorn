@@ -108,5 +108,8 @@ func startController(c *cli.Context) error {
 	addShutdown(func() {
 		control.Shutdown()
 	})
+	if controlIp != "" {
+		go http.ListenAndServe(controlIp+":9501", router)
+	}
 	return http.ListenAndServe(listen, router)
 }
