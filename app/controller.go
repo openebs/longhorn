@@ -52,7 +52,7 @@ func ControllerCmd() cli.Command {
 }
 
 func startController(c *cli.Context) error {
-	var controlIp string
+	var controlIP string
 	if c.NArg() == 0 {
 		return errors.New("volume name is required")
 	}
@@ -84,9 +84,9 @@ func startController(c *cli.Context) error {
 		frontend = f
 	}
 	if frontendName == "gotgt" {
-		controlIp = c.Args()[1]
+		controlIP = c.Args()[1]
 	}
-	control := controller.NewController(name, controlIp, dynamic.New(factories), frontend)
+	control := controller.NewController(name, controlIP, dynamic.New(factories), frontend)
 	server := rest.NewServer(control)
 	router := http.Handler(rest.NewRouter(server))
 
@@ -108,8 +108,8 @@ func startController(c *cli.Context) error {
 	addShutdown(func() {
 		control.Shutdown()
 	})
-	if controlIp != "" {
-		go http.ListenAndServe(controlIp+":9501", router)
+	if controlIP != "" {
+		go http.ListenAndServe(controlIP+":9501", router)
 	}
 	return http.ListenAndServe(listen, router)
 }

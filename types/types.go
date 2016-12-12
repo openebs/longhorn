@@ -58,7 +58,7 @@ type Replica struct {
 }
 
 type Frontend interface {
-	Startup(name string, controlIp string, size, sectorSize int64, rw ReaderWriterAt) error
+	Startup(name string, controlIP string, size, sectorSize int64, rw ReaderWriterAt) error
 	Shutdown() error
 	State() State
 }

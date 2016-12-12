@@ -30,7 +30,7 @@ type goTgt struct {
 	scsiDevice *util.ScsiDevice
 }
 
-func (t *goTgt) Startup(name string, controlIp string, size, sectorSize int64, rw types.ReaderWriterAt) error {
+func (t *goTgt) Startup(name string, controlIP string, size, sectorSize int64, rw types.ReaderWriterAt) error {
 	/*if err := t.Shutdown(); err != nil {
 		return err
 	}*/
@@ -48,7 +48,7 @@ func (t *goTgt) Startup(name string, controlIp string, size, sectorSize int64, r
 		ISCSIPortals: []config.ISCSIPortalInfo{
 			config.ISCSIPortalInfo{
 				ID:     0,
-				Portal: controlIp + ":3260",
+				Portal: controlIP + ":3260",
 			},
 		},
 		ISCSITargets: map[string]config.ISCSITarget{
