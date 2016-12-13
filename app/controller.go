@@ -62,7 +62,6 @@ func startController(c *cli.Context) error {
 	}
 	name := c.Args()[0]
 
-	listen := c.String("listen")
 	backends := c.StringSlice("enable-backend")
 	replicas := c.StringSlice("replica")
 	frontendName := c.String("frontend")
@@ -107,11 +106,11 @@ func startController(c *cli.Context) error {
 		}
 	}
 
-	logrus.Infof("Listening on %s", listen)
+	logrus.Infof("Listening on %s", "*:9501")
 
 	addShutdown(func() {
 		control.Shutdown()
 	})
 
-	return http.ListenAndServe(listen, router)
+	return http.ListenAndServe(":9501", router)
 }
