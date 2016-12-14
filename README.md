@@ -1,5 +1,6 @@
-longhorn [![Build Status](https://drone.rancher.io/api/badges/rancher/longhorn/status.svg)](https://drone.rancher.io/rancher/longhorn)
-========
+longhorn 
+
+[![Build Status](https://travis-ci.org/openebs/longhorn.svg?branch=master)](https://travis-ci.org/openebs/longhorn)
 
 A microservice that does micro things.
 
