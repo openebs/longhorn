@@ -110,7 +110,6 @@ func (c *ControllerClient) DeleteReplica(address string) (*rest.Replica, error) 
 	if err != nil {
 		return nil, err
 	}
-
 	for _, rep := range reps {
 		if rep.Address == address {
 			httpReq, err := http.NewRequest("DELETE", rep.Links["self"], nil)
