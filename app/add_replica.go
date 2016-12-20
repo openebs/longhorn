@@ -6,6 +6,7 @@ import (
 
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
+	"github.com/openebs/longhorn/replica"
 	"github.com/openebs/longhorn/sync"
 )
 
@@ -32,7 +33,7 @@ func addReplica(c *cli.Context) error {
 	return task.AddReplica(replica)
 }
 
-func AutoAddReplica(frontendIP string, replica string) error {
+func AutoAddReplica(s *replica.Server, frontendIP string, replica string) error {
 	url := "http://" + frontendIP + ":9501"
 	task := sync.NewTask(url)
 	for {
@@ -41,6 +42,9 @@ func AutoAddReplica(frontendIP string, replica string) error {
 			time.Sleep(2 * time.Second)
 			continue
 		}
-		return err
+		x := <-s.Worker
+		if x == 1 {
+			continue
+		}
 	}
 }

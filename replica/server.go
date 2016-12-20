@@ -22,6 +22,8 @@ type State string
 type Server struct {
 	sync.RWMutex
 	r                 *Replica
+	FrontendIP        string
+	Worker            chan int
 	dir               string
 	defaultSectorSize int64
 	backing           *BackingFile

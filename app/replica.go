@@ -49,9 +49,9 @@ func ReplicaCmd() cli.Command {
 		},
 	}
 }
-func AutoConfigureReplica(frontendIP string, address string) {
+func AutoConfigureReplica(s *replica.Server, frontendIP string, address string) {
 	AutoRmReplica(frontendIP, address)
-	AutoAddReplica(frontendIP, address)
+	AutoAddReplica(s, frontendIP, address)
 }
 func startReplica(c *cli.Context) error {
 	if c.NArg() != 1 {
@@ -68,6 +68,10 @@ func startReplica(c *cli.Context) error {
 
 	address := c.String("listen")
 	frontendIP := c.String("frontendIP")
+	if frontendIP != "" {
+		s.FrontendIP = frontendIP
+		s.Worker = make(chan int)
+	}
 	size := c.String("size")
 	if size != "" {
 		size, err := units.RAMInBytes(size)
@@ -127,7 +131,7 @@ func startReplica(c *cli.Context) error {
 		}()
 	}
 	if frontendIP != "" {
-		go AutoConfigureReplica(frontendIP, "tcp://"+address)
+		go AutoConfigureReplica(s, frontendIP, "tcp://"+address)
 	}
 
 	return <-resp
