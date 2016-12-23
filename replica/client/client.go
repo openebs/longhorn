@@ -137,7 +137,6 @@ func (c *ReplicaClient) OpenReplica() error {
 	if err != nil {
 		return err
 	}
-
 	return c.post(r.Actions["open"], nil, nil)
 }
 

@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
+	"github.com/openebs/longhorn/controller/client"
 	"github.com/openebs/longhorn/replica/rest"
 	"github.com/openebs/longhorn/rpc"
 	"github.com/openebs/longhorn/types"
@@ -173,6 +174,12 @@ func (rf *Factory) Create(address string) (types.Backend, error) {
 
 	return r, nil
 }
+func AutoRmReplica(frontendIP string, replica string) error {
+	url := "http://" + frontendIP + ":9501"
+	controllerClient := client.NewControllerClient(url)
+	_, err := controllerClient.DeleteReplica(replica)
+	return err
+}
 
 func (r *Remote) monitorPing(client *rpc.Client) error {
 	ticker := time.NewTicker(pingInveral)
@@ -192,6 +199,7 @@ func (r *Remote) monitorPing(client *rpc.Client) error {
 					logrus.Errorf("Ping retry %v on replica %v; error: %v", retry, r.replicaURL, err)
 					journal.PrintLimited(1000) //flush automatically upon retry
 				} else {
+					AutoRmReplica("localhost", r.name)
 					logrus.Errorf("Failed to get ping response from replica %v; error: %v", r.replicaURL, err)
 					journal.PrintLimited(1000) //flush automatically upon error
 					client.SetError(err)

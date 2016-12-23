@@ -22,6 +22,8 @@ type State string
 type Server struct {
 	sync.RWMutex
 	r                 *Replica
+	FrontendIP        string
+	Worker            chan int
 	dir               string
 	defaultSectorSize int64
 	backing           *BackingFile
@@ -66,7 +68,6 @@ func (s *Server) Create(size int64) error {
 	if err != nil {
 		return err
 	}
-
 	return r.Close()
 }
 
@@ -226,7 +227,6 @@ func (s *Server) Close() error {
 	if s.r == nil {
 		return nil
 	}
-
 	logrus.Infof("Closing volume")
 	if err := s.r.Close(); err != nil {
 		return err

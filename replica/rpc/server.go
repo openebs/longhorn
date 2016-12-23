@@ -39,7 +39,6 @@ func (s *Server) ListenAndServe() error {
 		}
 
 		logrus.Infof("New connection from: %v", conn.RemoteAddr())
-
 		go func(conn net.Conn) {
 			server := rpc.NewServer(conn, s.s)
 			server.Handle()

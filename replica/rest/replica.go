@@ -139,7 +139,11 @@ func (s *Server) ReloadReplica(rw http.ResponseWriter, req *http.Request) error 
 }
 
 func (s *Server) CloseReplica(rw http.ResponseWriter, req *http.Request) error {
-	return s.doOp(req, s.s.Close())
+	err := s.doOp(req, s.s.Close())
+	if s.s.FrontendIP != "" {
+		s.s.Worker <- 1
+	}
+	return err
 }
 
 func (s *Server) DeleteReplica(rw http.ResponseWriter, req *http.Request) error {
