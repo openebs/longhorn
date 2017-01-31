@@ -24,7 +24,7 @@ import:
   version: 71f57d300dd6a780ac1856c005c4b518cfd498ec
 - package: github.com/satori/go.uuid
   version: f9ab0dce87d815821e221626b772e3475a0d2749
-- package: github.com/longhorn/sparse-tools
+- package: github.com/openebs/sparse-tools
   version: 95aa584a2e9a307cb2193176d449cce0217adff1 
 - package: github.com/rancher/go-rancher-metadata
   version: 721b783c9983a17ec0d63d5530337610de9519ec
