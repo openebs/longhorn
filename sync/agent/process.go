@@ -21,6 +21,7 @@ import (
 type Server struct {
 	sync.Mutex
 
+	listener           string
 	processCounter     int
 	currentPort        int
 	startPort, endPort int
@@ -29,8 +30,9 @@ type Server struct {
 	processesByPort    map[int]*Process
 }
 
-func NewServer(start, end int) *Server {
+func NewServer(listen string, start, end int) *Server {
 	return &Server{
+		listener:        listen,
 		currentPort:     start,
 		startPort:       start,
 		endPort:         end,
@@ -179,6 +181,9 @@ func (s *Server) launchSync(p *Process) error {
 	}
 	if p.Port != 0 {
 		args = append(args, "-port", strconv.Itoa(p.Port))
+	}
+	if s.listener != "" {
+		args = append(args, "-hostIP", s.listener)
 	}
 	if p.SrcFile == "" {
 		args = append(args, "-daemon")

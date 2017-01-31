@@ -11,8 +11,8 @@ import (
 	"github.com/docker/docker/pkg/reexec"
 	"github.com/openebs/longhorn/app"
 	"github.com/openebs/longhorn/backup"
-	"github.com/rancher/sparse-tools/cli/sfold"
-	"github.com/rancher/sparse-tools/cli/ssync"
+	"github.com/openebs/sparse-tools/cli/sfold"
+	"github.com/openebs/sparse-tools/cli/ssync"
 )
 
 func main() {

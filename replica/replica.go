@@ -15,7 +15,7 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/deckarep/golang-set"
 	"github.com/openebs/longhorn/types"
-	"github.com/rancher/sparse-tools/sparse"
+	"github.com/openebs/sparse-tools/sparse"
 )
 
 const (

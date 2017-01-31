@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/Sirupsen/logrus"
-	journal "github.com/rancher/sparse-tools/stats"
+	journal "github.com/openebs/sparse-tools/stats"
 )
 
 var (

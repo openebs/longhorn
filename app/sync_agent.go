@@ -52,7 +52,7 @@ func startSyncAgent(c *cli.Context) error {
 		return err
 	}
 
-	server := agent.NewServer(start, end)
+	server := agent.NewServer(listen, start, end)
 	router := agent.NewRouter(server)
 	logrus.Infof("Listening on sync %s", listen)
 

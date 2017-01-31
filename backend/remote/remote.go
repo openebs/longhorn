@@ -17,7 +17,7 @@ import (
 	"github.com/openebs/longhorn/rpc"
 	"github.com/openebs/longhorn/types"
 	"github.com/openebs/longhorn/util"
-	journal "github.com/rancher/sparse-tools/stats"
+	journal "github.com/openebs/sparse-tools/stats"
 )
 
 var (
