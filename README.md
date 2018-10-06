@@ -2,13 +2,13 @@ Longhorn Engine
 ========
 [![Build Status](https://drone8.rancher.io/api/badges/rancher/longhorn-engine/status.svg)](https://drone8.rancher.io/rancher/longhorn-engine) [![Go Report Card](https://goreportcard.com/badge/github.com/rancher/longhorn-engine)](https://goreportcard.com/report/github.com/rancher/longhorn-engine)
 
-Longhorn Engine implements a lightweight block device storage controller capable of storing the data in a number of replicas. It functions like a network RAID controller.
+Longhorn Engine implements a lightweight block device storage controller capable of storing the data in a number of replicas. It functions as a network RAID controller.
 
 1. The replicas are backed by Linux sparse files, and support efficient snapshots using differencing disks.
 1. The replicas function like a networked disk, supporting read/write operations over a network protocol.
 1. The frontend (either TCMU or Open-iSCSI/tgt are supported at this moment) is a kernel driver that translates read/write operations on the Longhorn block device (mapped at `/dev/longhorn/vol-name`) to user-level network requests on the controller.
 1. Each Longhorn block device is backed by its own dedicated controller.
-1. The controller sychronously replicates write operations to all replicas.
+1. The controller synchronously replicates write operations to all replicas.
 1. The controller detects faulty replicas and rebuilds replicas.
 1. The controller coordinates snapshot and backup operations.
 1. Controllers and replicas are packaged as Docker containers.
@@ -27,22 +27,22 @@ The following figure illustrates the relationship between the Longhorn block dev
 The easiest way to try the Longhorn Engine is to start a controller with a single replica.
 
 You can choose either TGT or TCMU frontend. TGT frontend is recommended. TGT
-can work with majority of the Linux distributions, while TCMU can work with
+can work with the majority of the Linux distributions, while TCMU can work with
 RancherOS v0.4.4 and above only.
 
-Host needs to have `docker` installed. Run following command to make sure:
+Host needs to have `docker` installed. Run the following command to make sure:
 ```
 docker info
 ```
 
 #### With TGT frontend
 
-User need to make sure the host has `iscsiadm` installed. Run following command to check:
+User needs to make sure the host has `iscsiadm` installed. Run the following command to check:
 ```
 iscsiadm --version
 ```
 
-To start Longhorn Engine with an single replica, run following command:
+To start Longhorn Engine with a single replica, run following command:
 ```
 docker run --privileged -v /dev:/host/dev -v /proc:/host/proc -v /volume \
     rancher/longhorn-engine launch-simple-longhorn vol-name 10g tgt
@@ -53,12 +53,12 @@ That will create the device `/dev/longhorn/vol-name`
 #### With TCMU frontend
 
 You need to be running RancherOS v0.4.4 (all kernel patches are upstreamed but only available after Linux v4.5).
-Also ensure that TCMU is enabled:
+Also, ensure that TCMU is enabled:
 
     modprobe target_core_user
     mount -t configfs none /sys/kernel/config
 
-To start Longhorn Engine with an single replica, run following command:
+To start Longhorn Engine with a single replica, run the following command:
 ```
 docker run --privileged -v /dev:/host/dev -v /proc:/host/proc \
     -v /sys/kernel/config:/sys/kernel/config -v /volume \
@@ -69,7 +69,7 @@ That will create the device `/dev/longhorn/vol-name`
 
 ## Running a controller with multiple replicas
 
-In order to start Longhorn Engine with multiple replicas, you need to setup a network between replica container and controller container. Here we use Docker network feature to demostrate that:
+In order to start Longhorn Engine with multiple replicas, you need to setup a network between replica container and controller container. Here we use Docker network feature to demonstrate that:
 
 ##### 1. Create a network named `longhorn-net`
 ```
