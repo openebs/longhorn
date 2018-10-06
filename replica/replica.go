@@ -182,6 +182,11 @@ func construct(readonly bool, size, sectorSize int64, dir, head string, backingF
 	r.info.Parent = r.diskData[r.info.Head].Parent
 
 	r.insertBackingFile()
+	r.ReplicaType = replicaType
+
+	if err := PreloadLunMap(&r.volume); err != nil {
+		return r, fmt.Errorf("failed to load Lun map, error: %v", err)
+	}
 
 	return r, r.writeVolumeMetaData(true, r.info.Rebuilding)
 }
