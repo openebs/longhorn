@@ -86,12 +86,12 @@ func (r *Remote) doAction(action string, obj interface{}) error {
 	if err != nil {
 		return err
 	}
-	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
+		resp.Body.Close()
 		return fmt.Errorf("Bad status: %d %s", resp.StatusCode, resp.Status)
 	}
-
+	resp.Body.Close()
 	return nil
 }
 
@@ -149,13 +149,15 @@ func (r *Remote) info() (rest.Replica, error) {
 	if err != nil {
 		return replica, err
 	}
-	defer resp.Body.Close()
+
 
 	if resp.StatusCode != http.StatusOK {
+		resp.Body.Close()
 		return replica, fmt.Errorf("Bad status: %d %s", resp.StatusCode, resp.Status)
 	}
 
 	err = json.NewDecoder(resp.Body).Decode(&replica)
+	resp.Body.Close()
 	return replica, err
 }
 

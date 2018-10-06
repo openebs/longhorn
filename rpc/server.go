@@ -26,10 +26,9 @@ func NewServer(conn net.Conn, data types.DataProcessor) *Server {
 
 func (s *Server) Handle() error {
 	go s.write()
-	defer func() {
-		s.done <- struct{}{}
-	}()
-	return s.read()
+	err:= s.read()
+	s.done <- struct{}{}
+	return err
 }
 
 func (s *Server) readFromWire(ret chan<- error) {

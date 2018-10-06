@@ -208,15 +208,16 @@ func (c *Controller) SetReplicaMode(address string, mode types.Mode) error {
 	switch mode {
 	case types.ERR:
 		c.Lock()
-		defer c.Unlock()
+		c.setReplicaModeNoLock(address, mode)
+		c.Unlock()
 	case types.RW:
 		c.RLock()
-		defer c.RUnlock()
+		c.setReplicaModeNoLock(address, mode)
+		c.RUnlock()
 	default:
 		return fmt.Errorf("Can not set to mode %s", mode)
 	}
 
-	c.setReplicaModeNoLock(address, mode)
 	return nil
 }
 
@@ -259,7 +260,8 @@ func (c *Controller) Start(addresses ...string) error {
 	var expectedRevision int64
 
 	c.Lock()
-	defer c.Unlock()
+	c.setReplicaModeNoLock(address, types.RW)
+	c.Unlock()
 
 	if len(addresses) == 0 {
 		return nil
@@ -304,7 +306,6 @@ func (c *Controller) Start(addresses ...string) error {
 			return err
 		}
 		// We will validate this later
-		c.setReplicaModeNoLock(address, types.RW)
 	}
 
 	revisionCounters := make(map[string]int64)
@@ -385,7 +386,7 @@ func (c *Controller) handleErrorNoLock(err error) error {
 
 func (c *Controller) handleError(err error) error {
 	c.Lock()
-	defer c.Unlock()
+	c.Unlock()
 	return c.handleErrorNoLock(err)
 }
 
@@ -401,28 +402,28 @@ func (c *Controller) Close() error {
 func (c *Controller) shutdownFrontend() error {
 	// Make sure writing data won't be blocked
 	c.RLock()
-	defer c.RUnlock()
 
 	// shutdown launcher's frontend if applied
 	if c.launcher != "" {
 		logrus.Infof("Asking the launcher to shutdown the frontend")
 		if err := c.launcherShutdownFrontend(); err != nil {
+			c.RUnlock()
 			return err
 		}
 	}
 	if c.frontend != nil {
+		c.RUnlock()
 		return c.frontend.Shutdown()
 	}
+	c.RUnlock()
 	return nil
 }
 
 func (c *Controller) shutdownBackend() error {
 	c.Lock()
-	defer c.Unlock()
-
 	err := c.backend.Close()
 	c.reset()
-
+	c.Unlock()
 	return err
 }
 
