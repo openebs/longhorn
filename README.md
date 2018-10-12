@@ -4,14 +4,14 @@ Longhorn Engine
 
 Longhorn Engine implements a lightweight block device storage controller capable of storing the data in a number of replicas. It functions like a network RAID controller.
 
-1. The replicas are backed by Linux sparse files, and support efficient snapshots using differencing disks.
-1. The replicas function like a networked disk, supporting read/write operations over a network protocol.
-1. The frontend (either TCMU or Open-iSCSI/tgt are supported at this moment) is a kernel driver that translates read/write operations on the Longhorn block device (mapped at `/dev/longhorn/vol-name`) to user-level network requests on the controller.
-1. Each Longhorn block device is backed by its own dedicated controller.
-1. The controller sychronously replicates write operations to all replicas.
-1. The controller detects faulty replicas and rebuilds replicas.
-1. The controller coordinates snapshot and backup operations.
-1. Controllers and replicas are packaged as Docker containers.
+-The replicas are backed by Linux sparse files, and support efficient snapshots using differencing disks.
+-The replicas function like a networked disk, supporting read/write operations over a network protocol.
+-The frontend (either TCMU or Open-iSCSI/tgt are supported at this moment) is a kernel driver that translates read/write operations on the Longhorn block device (mapped at `/dev/longhorn/vol-name`) to user-level network requests on the controller.
+-Each Longhorn block device is backed by its own dedicated controller.
+-The controller sychronously replicates write operations to all replicas.
+-The controller detects faulty replicas and rebuilds replicas.
+-The controller coordinates snapshot and backup operations.
+-Controllers and replicas are packaged as Docker containers.
 
 The following figure illustrates the relationship between the Longhorn block device, TCMU/tgt frontend, controller, and replicas.
 
