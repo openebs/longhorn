@@ -19,6 +19,7 @@ The following figure illustrates the relationship between the Longhorn block dev
 
 ## Building from source code
 
+Building from source code is as simple as using your terminal, and `cd`ing to the source directory, and running
 `make`
 
 
