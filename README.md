@@ -37,7 +37,7 @@ docker info
 
 #### With TGT frontend
 
-User need to make sure the host has `iscsiadm` installed. Run following command to check:
+User needs to make sure the host has `iscsiadm` installed. Run following command to check:
 ```
 iscsiadm --version
 ```
