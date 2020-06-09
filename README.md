@@ -1,3 +1,14 @@
+OpenEBS initially started off as a fork of Longhorn Engine. However, OpenEBS Jiva and Longhorn diverged in terms of the following:
+
+- Control Plane functionality
+- iSCSI Target implementation 
+- Quorum 
+- Backup / Restore 
+- UI 
+
+OpenEBS Jiva implementation can be found at : https://github.com/openebs/jiva
+
+
 Longhorn Engine 
 ========
 [![Build Status](https://drone8.rancher.io/api/badges/rancher/longhorn-engine/status.svg)](https://drone8.rancher.io/rancher/longhorn-engine) [![Go Report Card](https://goreportcard.com/badge/github.com/rancher/longhorn-engine)](https://goreportcard.com/report/github.com/rancher/longhorn-engine)
